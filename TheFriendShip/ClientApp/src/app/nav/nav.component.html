@@ -1,11 +1,27 @@
-<mat-toolbar color="warn">
-  <h2 class="heading">Friend Ship</h2>
-  <h3 class="heading">Matches</h3>
-  <h3 class="heading" href="">Friend List</h3>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<mat-toolbar color="warn" class="topnav" id="nav">
+  <a class="topnav" href="">Friend Ship</a>
+  <a class="topnav" href="">Matches</a>
+  <a class="topnav" href="">Friend List</a>
   <span class="fill-remaining-space"></span>
   <form>
-    <input class="heading" type="text" placeholder="username"/>
-    <input class="heading" type="text" placeholder="password" />
-    <input class="heading" type="submit" value="Submit" />
+    <input class="input" type="text" placeholder="username" />
+    <input class="input" type="text" placeholder="password" />
+    <input class="input" type="submit" value="Submit" />
   </form>
+  <a href="javascipt:void(0);" class="icon" onclick="hamburger()">
+    <i class="fa fa-bars"></i>
+  </a>
 </mat-toolbar>
+
+<script>
+  function hamburger() {
+    var x = document.getElementById("nav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>
