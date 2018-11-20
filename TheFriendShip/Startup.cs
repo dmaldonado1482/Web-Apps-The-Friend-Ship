@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TheFriendShip.Data;
 using TheFriendShip.Models;
 
 namespace TheFriendShip
@@ -22,9 +23,9 @@ namespace TheFriendShip
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
+            services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserContext")));
 
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DbContext>();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

@@ -8,11 +8,10 @@ using TheFriendShip.Models;
 
 namespace TheFriendShip.Data
 {
-    public class DbContext : IdentityDbContext<User>
+    public class UserContext : IdentityDbContext<User>
     {
-        public DbContext (DbContextOptions<DbContext> options) : base(options)
+        public UserContext (DbContextOptions<UserContext> options) : base(options)
         {
-
         }
     }
 }
