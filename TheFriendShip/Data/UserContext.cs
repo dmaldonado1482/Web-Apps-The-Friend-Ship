@@ -13,5 +13,7 @@ namespace TheFriendShip.Data
         public UserContext (DbContextOptions<UserContext> options) : base(options)
         {
         }
+
+        public DbSet<Models.User> User { get; set; }
     }
 }
