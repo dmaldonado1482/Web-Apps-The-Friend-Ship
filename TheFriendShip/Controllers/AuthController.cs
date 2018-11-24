@@ -72,8 +72,8 @@ namespace TheFriendShip.Controllers
         {
             var subject = new[]
                     {
-                        new Claim(ClaimTypes.NameIdentifier, user.UserName.UserName),
-                        new Claim(ClaimTypes.Name, user.UserName.UserName)
+                        new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                        new Claim(ClaimTypes.Name, user.UserName)
                     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret Testing Key"));
