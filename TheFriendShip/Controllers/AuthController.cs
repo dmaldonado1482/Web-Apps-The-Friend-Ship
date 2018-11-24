@@ -35,7 +35,7 @@ namespace TheFriendShip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return Ok("Login succeeded");
+                    return Ok("Login sgle.com/mail/u/1/?pli=1#tucceeded");
                 }
                 else
                 {
@@ -68,12 +68,12 @@ namespace TheFriendShip.Controllers
 
         }
 
-        private string BuildToken(LoginDTO user)
+        private string BuildToken(LoginVM user)
         {
             var subject = new[]
                     {
-                        new Claim(ClaimTypes.NameIdentifier, user.UserName),
-                        new Claim(ClaimTypes.Name, user.UserName)
+                        new Claim(ClaimTypes.NameIdentifier, user.UserName.UserName),
+                        new Claim(ClaimTypes.Name, user.UserName.UserName)
                     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret Testing Key"));
