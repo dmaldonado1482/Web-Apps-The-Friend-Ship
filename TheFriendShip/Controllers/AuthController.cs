@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TheFriendShip.Controllers
 {
@@ -28,6 +29,7 @@ namespace TheFriendShip.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginVM user)
         {
             if (ModelState.IsValid)
@@ -35,6 +37,7 @@ namespace TheFriendShip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
                 if (result.Succeeded)
                 {
+                    var token = new BuildToken(user);
                     return Ok("Login sgle.com/mail/u/1/?pli=1#tucceeded");
                 }
                 else
