@@ -37,8 +37,7 @@ namespace TheFriendShip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
                 if (result.Succeeded)
                 {
-                    var token = new BuildToken(user);
-                    return Ok("Login sgle.com/mail/u/1/?pli=1#tucceeded");
+                    return Ok(BuildToken(user));
                 }
                 else
                 {
