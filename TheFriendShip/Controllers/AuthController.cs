@@ -37,7 +37,7 @@ namespace TheFriendShip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return Ok(BuildToken(user));
+                    return Ok("Login Succeeded. \nUsername: " + user.UserName + "\n" + BuildToken(user));
                 }
                 else
                 {
