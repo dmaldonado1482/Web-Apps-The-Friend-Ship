@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,5 @@ export class LoginComponent implements OnInit {
     console.log('Submitted');
     console.log(this.model);
   }
+}
 
-}
-export class User {
-  constructor() { }
-}
