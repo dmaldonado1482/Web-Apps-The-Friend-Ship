@@ -29,6 +29,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    JwtHelperService,
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
