@@ -1,6 +1,7 @@
 export class User {
   username: string;
   password: string;
+  confpassword: string;
 }
 
 export interface User {
@@ -10,5 +11,5 @@ export interface User {
 
 export interface AuthUser {
   tokenString: string;
-  user: User;
+  user: string;
 }

@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -27,8 +27,8 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,

@@ -19,7 +19,12 @@ export class RegisterComponent implements OnInit {
   submit(form: Form) {
     console.log('Submitted');
     console.log(this.model);
-    
+
+    if (this.model['password'] == this.model['confpassword']) {
+      alert("Passwords match!");
+    } else {
+      alert("Passwords do not match!")
+    }
   }
 
 }
