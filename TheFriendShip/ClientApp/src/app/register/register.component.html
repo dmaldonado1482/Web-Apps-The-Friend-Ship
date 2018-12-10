@@ -1,0 +1,27 @@
+<div>
+  <form (submit)="submit(registerForm)" #registerForm="ngForm">
+    <table>
+      <thead>Sign Up</thead>
+      <tr>
+        <td>
+          <input type="text" placeholder="Username" name="userName" [(ngModel)]="model.username" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="password" placeholder="Password" name="password" [(ngModel)]="model.password" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="model.confpassword" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit">Register</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
