@@ -12,6 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace TheFriendShip.Controllers
 {
@@ -50,6 +51,7 @@ namespace TheFriendShip.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterVM user)
         {
+            return await SeedDb();
             if (!string.IsNullOrEmpty(user.UserName))
             {
                 // Make user name lower case
@@ -86,6 +88,21 @@ namespace TheFriendShip.Controllers
               signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private async Task<IActionResult> SeedDb()
+        {
+            var userData = System.IO.File.ReadAllText("Data/UserData.json");
+            var users = JsonConvert.DeserializeObject<List<User>>(userData);
+
+            foreach (var user in users)
+            {
+                user.UserName = user.UserName.ToLower();
+                string pw = user.PasswordHash;
+                user.PasswordHash = null;
+                await _userManager.CreateAsync(user, pw);
+            }
+            return Ok("DB seeded");
         }
     }
 }
