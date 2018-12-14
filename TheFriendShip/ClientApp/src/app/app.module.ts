@@ -36,7 +36,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:*', 'https://thefriendshipannerd.azurewebsites.net/api/auth/login'],
+        whitelistedDomains: ['localhost:*', 'https://thefriendship20181115114350.azurewebsites.net/api/auth/login'],
       }
     })
   ],
