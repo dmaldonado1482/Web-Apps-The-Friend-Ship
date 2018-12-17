@@ -34,16 +34,18 @@ namespace TheFriendShip.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
+                //var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
+                var userInfo = await _userManager.FindByNameAsync(user.UserName);
+                var result = await _signInManager.CheckPasswordSignInAsync(userInfo, user.Password, false);
                 if (result.Succeeded)
                 {
                     LoginReturn loginReturn = new LoginReturn
                     {
-                        tokenString = BuildToken(user),
-                        user = user.UserName
+                        TokenString = BuildToken(user),
+                        User = user.UserName
                     };
                     //return Ok("Login Succeeded. \nUsername: " + user.UserName + "\n" + BuildToken(user));
-                    return Ok(Newtonsoft.Json.JsonConvert.SerializeObject(loginReturn));
+                    return Ok(JsonConvert.SerializeObject(loginReturn));
                 }
                 else
                 {
@@ -59,7 +61,6 @@ namespace TheFriendShip.Controllers
             //return await SeedDb();
             if (!string.IsNullOrEmpty(user.UserName))
             {
-                // Make user name lower case
                 user.UserName = user.UserName.ToLower();
             }
             if (!ModelState.IsValid)

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthUser } from '../models/user';
 import { map } from 'rxjs/operators';
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { tokenGetter } from '../app.module';
 
 @Injectable({

@@ -28,7 +28,17 @@ namespace TheFriendShip
         {
             services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserContext")));
 
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserContext>();
+            //services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserContext>();
+            services.AddIdentity<User, IdentityRole>(x =>
+            {
+                x.Password.RequireDigit = false;
+                x.Password.RequiredLength = 4;
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+                x.Password.RequireLowercase = false;
+            })
+            .AddEntityFrameworkStores<UserContext>()
+            .AddSignInManager<SignInManager<User>> ();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
