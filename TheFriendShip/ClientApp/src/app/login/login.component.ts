@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, Form } from '@angular/forms';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
 
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(form: NgForm) {
+  //changed from NgForm to Form
+  submit(form: Form) {
     console.log('Submitted');
     console.log(this.model);
     this.authService.login(this.model).subscribe();

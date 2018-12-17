@@ -30,7 +30,6 @@ namespace TheFriendShip.Controllers
         }
 
         [HttpPost("login")]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginVM user)
         {
             if (ModelState.IsValid)
@@ -38,7 +37,13 @@ namespace TheFriendShip.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return Ok("Login Succeeded. \nUsername: " + user.UserName + "\n" + BuildToken(user));
+                    LoginReturn loginReturn = new LoginReturn
+                    {
+                        tokenString = BuildToken(user),
+                        user = user.UserName
+                    };
+                    //return Ok("Login Succeeded. \nUsername: " + user.UserName + "\n" + BuildToken(user));
+                    return Ok(Newtonsoft.Json.JsonConvert.SerializeObject(loginReturn));
                 }
                 else
                 {
@@ -51,7 +56,7 @@ namespace TheFriendShip.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterVM user)
         {
-            return await SeedDb();
+            //return await SeedDb();
             if (!string.IsNullOrEmpty(user.UserName))
             {
                 // Make user name lower case

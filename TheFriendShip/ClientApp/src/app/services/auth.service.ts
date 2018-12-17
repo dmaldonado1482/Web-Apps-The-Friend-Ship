@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   loggedInStatus() {
-    const token = tokenGetter();
+    const token = this.jwtHelper.tokenGetter();
     if (!token) return false;
     return !this.jwtHelper.isTokenExpired(token);
   }
