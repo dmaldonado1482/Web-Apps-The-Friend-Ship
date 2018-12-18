@@ -40,6 +40,7 @@ namespace TheFriendShip
             .AddEntityFrameworkStores<UserContext>()
             .AddSignInManager<SignInManager<User>> ();
 
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
